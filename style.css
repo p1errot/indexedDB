@@ -1,3 +1,32 @@
+:root {
+  --main-font: 'Open Sans', sans-serif;
+  --header-font: Lato, sans-serif;
+
+  --main-black: #333;
+  --boston-blue: #3897A4;
+}
+
+html, body {
+  color: var(--main-black);
+  font-family: var(--main-font);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 0 15px;
+}
+
+a {
+  color: var(--main-black);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration:none;
+  color: var(--boston-blue);
+}
+
 h1, h2 {
-  font-family: Lato;
+  font-family: var(--header-font);
 }
