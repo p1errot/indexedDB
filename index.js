@@ -3,32 +3,29 @@ import './style.css';
 
 // Check for compatibility
 if (!window.indexedDB) {
-  window.indexedDB = window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+  return;
 }
 
-const request = window.indexedDB.open('libraryDB', 1, function(upgradeDb) {
-  if (!upgradeDb.objectStoreNames.contains('BooksStore')) {
-      const store = upgradeDb.createObjectStore('people', {keyPath: 'email'});
-      store.createIndex('title', 'title', { unique: false });
-    }
-});
+const dbName = 'libraryDB';
+indexedDB.deleteDatabase(dbName);
+const request = window.indexedDB.open(dbName);
 
-/*
 request.onupgradeneeded = (e) => {
   const db = event.target.result;
   // For the index in the db, you can use keyPath or autoIncrement: true
   const store = db.createObjectStore('BooksStore', { keyPath: 'isbn' });
   const index = store.createIndex('title', 'title', { unique: false });
 }
-*/
 
 request.onerror = (err) => {
   log.error("There was an error: ", err.target.errorCode);
 };
 
-/*
+
 request.onsuccess = (e) => {
   const db = event.target.result;
+  window.db = db;
+
   const tx = db.transaction(['BooksStore'], 'readwrite');
   const store = tx.objectStore('BooksStore');
   const index = store.index('title');
@@ -52,4 +49,4 @@ request.onsuccess = (e) => {
     db.close();
   }
 }
-*/
+
