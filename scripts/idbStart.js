@@ -46,6 +46,8 @@ const startDB = () => {
   request.onupgradeneeded = upgradedEvent;
   request.onerror = errorEvent;
   request.onsuccess = successEvent;
+
+  return request;
 }
 
 export default startDB;
