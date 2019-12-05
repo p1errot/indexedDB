@@ -14,15 +14,11 @@ const upgradedEvent = (e) => {
 
 const successEvent = (e) => {
     const db = event.target.result;
-    window.db = db;
-
     const tx = db.transaction(['BooksStore'], 'readwrite');
     const store = tx.objectStore('BooksStore');
     const index = store.index('title');
 
-    db.onerror = (e) => {
-      log.error("Error: ", err.target.errorCode);
-    };
+    db.onerror = errorEvent;
 
     store.put({
       isbn: "123456",
@@ -40,8 +36,8 @@ const successEvent = (e) => {
     }
   }
 
-const startDB = () => {
-  const request = dbRequest('libraryDB');
+const startDB = (dbName) => {
+  const request = dbRequest(dbName);
 
   request.onupgradeneeded = upgradedEvent;
   request.onerror = errorEvent;
