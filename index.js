@@ -12,8 +12,11 @@ request.onsuccess = (e) => {
   const tx = db.transaction(['BooksStore'], 'readwrite');
   const store = tx.objectStore('BooksStore');
 
-  const data = store.getAll();
-  console.log(data);
+  const gettingData = store.get('123456');
+
+  gettingData.onsuccess = (e) => {
+    console.log('gettingData', gettingData.result);
+  }
 
   tx.oncomplete = (e) => {
     console.log('tx.oncomplete: ', e.target.result);
