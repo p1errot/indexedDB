@@ -4,20 +4,14 @@ import * as logger from 'loglevel';
 const drawItem = (element) => {
   const $app = document.getElementById('app');
   const $parent = document.createElement('div');
-  const $title = document.createElement('h3');
-  const $isbn = document.createElement('p');
-  const $description = document.createElement('p');
-
-  $title.innerHTML = element.title;
-  $isbn.innerHTML = `ISBN: ${element.isbn}`;
-  $description.innerHTML = element.description;
+  const bookItem = `
+    <h3>${element.title}</h3>
+    <p>${element.description}</p>
+    <p class="book-isbn">ISBN: ${element.isbn}</p>
+  `;
 
   $parent.classList.add('book-item');
-  $isbn.classList.add('book-isbn');
-
-  $parent.appendChild($title);
-  $parent.appendChild($description);
-  $parent.appendChild($isbn);
+  $parent.innerHTML = bookItem;
   $app.appendChild($parent);
 
   return $app;
