@@ -30,3 +30,17 @@ a:hover {
 h1, h2 {
   font-family: var(--header-font);
 }
+
+.book-item {
+  background: #EAEAEA;
+  margin: 0 0 20px;
+  padding: 5px 15px;
+}
+
+.book-item p {
+  margin: 0 0 10px;
+}
+
+.book-item .book-isbn {
+  font-style: italic;
+}
