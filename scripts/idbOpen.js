@@ -1,9 +1,8 @@
-// Check for compatibility
-if (!window.indexedDB) {
-  return;
-}
-
 const request = (dbName) => {
+  if (!window.indexedDB) {
+    return;
+  }
+
   return window.indexedDB.open(dbName);
 }
 

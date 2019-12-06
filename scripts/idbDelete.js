@@ -1,4 +1,3 @@
-
 const deleteDB = (dbName) => {
   indexedDB.deleteDatabase(dbName);
 }

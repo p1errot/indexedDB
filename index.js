@@ -1,29 +1,10 @@
-import dbRequest from './scripts/idbOpen';
+import idbGetData from './scripts/idbGet';
 import idbStart from './scripts/idbStart';
+import * as logger from 'loglevel';
 import './style.css';
 
+logger.enableAll();
+
 const dbName = 'libraryDB';
-idbStart(dbName);
-
-/*
-setTimeout(() => {
-  const request = dbRequest(dbName);
-
-  request.onsuccess = (e) => {
-    const db = event.target.result;
-    const tx = db.transaction(['BooksStore']);
-    const store = tx.objectStore('BooksStore');
-
-    const gettingData = store.get('123456');
-
-    gettingData.onsuccess = (e) => {
-      console.log('gettingData', gettingData.result);
-    }
-
-    tx.oncomplete = (e) => {
-      console.log('tx.oncomplete: ', e.target.result);
-      db.close();
-    }
-  };
-}, 2000);
-*/
+// idbStart(dbName);
+idbGetData(dbName);

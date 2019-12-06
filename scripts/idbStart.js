@@ -8,7 +8,6 @@ const errorEvent = (err) => {
 
 const upgradedEvent = (e) => {
   const db = event.target.result;
-  // For the index in the db, you can use keyPath or autoIncrement: true
   const store = db.createObjectStore('BooksStore', { keyPath: 'isbn' });
   const index = store.createIndex('title', 'title', { unique: false });
 }
