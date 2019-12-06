@@ -1,4 +1,5 @@
 import dbRequest from './idbOpen';
+import dbDelete from './idbDelete';
 import * as logger from 'loglevel';
 
 const errorEvent = (err) => {
@@ -37,6 +38,8 @@ const successEvent = (e) => {
   }
 
 const startDB = (dbName) => {
+  dbDelete(dbName);
+
   const request = dbRequest(dbName);
 
   request.onupgradeneeded = upgradedEvent;

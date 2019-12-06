@@ -5,22 +5,25 @@ import './style.css';
 const dbName = 'libraryDB';
 idbStart(dbName);
 
-const request = dbRequest(dbName);
+/*
+setTimeout(() => {
+  const request = dbRequest(dbName);
 
-request.onsuccess = (e) => {
-  const db = event.target.result;
-  const tx = db.transaction(['BooksStore'], 'readwrite');
-  const store = tx.objectStore('BooksStore');
+  request.onsuccess = (e) => {
+    const db = event.target.result;
+    const tx = db.transaction(['BooksStore']);
+    const store = tx.objectStore('BooksStore');
 
-  const gettingData = store.get('123456');
+    const gettingData = store.get('123456');
 
-  gettingData.onsuccess = (e) => {
-    console.log('gettingData', gettingData.result);
-  }
+    gettingData.onsuccess = (e) => {
+      console.log('gettingData', gettingData.result);
+    }
 
-  tx.oncomplete = (e) => {
-    console.log('tx.oncomplete: ', e.target.result);
-    db.close();
-  }
-};
-
+    tx.oncomplete = (e) => {
+      console.log('tx.oncomplete: ', e.target.result);
+      db.close();
+    }
+  };
+}, 2000);
+*/

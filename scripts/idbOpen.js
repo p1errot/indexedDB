@@ -4,8 +4,6 @@ if (!window.indexedDB) {
 }
 
 const request = (dbName) => {
-  indexedDB.deleteDatabase(dbName);
-
   return window.indexedDB.open(dbName);
 }
 
